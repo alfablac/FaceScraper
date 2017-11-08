@@ -1,0 +1,10 @@
+c:\users\ulisses\documents\visual studio 2015\Projects\FacebookScraper\FacebookScraper\bin\Debug\FacebookScraper.exe
+c:\users\ulisses\documents\visual studio 2015\Projects\FacebookScraper\FacebookScraper\bin\Debug\FacebookScraper.pdb
+c:\users\ulisses\documents\visual studio 2015\Projects\FacebookScraper\FacebookScraper\bin\Debug\WebDriver.dll
+c:\users\ulisses\documents\visual studio 2015\Projects\FacebookScraper\FacebookScraper\bin\Debug\WebDriver.xml
+c:\users\ulisses\documents\visual studio 2015\Projects\FacebookScraper\FacebookScraper\obj\Debug\FacebookScraper.csprojResolveAssemblyReference.cache
+c:\users\ulisses\documents\visual studio 2015\Projects\FacebookScraper\FacebookScraper\obj\Debug\FacebookScraper.Properties.Resources.resources
+c:\users\ulisses\documents\visual studio 2015\Projects\FacebookScraper\FacebookScraper\obj\Debug\FacebookScraper.csproj.GenerateResource.Cache
+c:\users\ulisses\documents\visual studio 2015\Projects\FacebookScraper\FacebookScraper\obj\Debug\FacebookScraper.exe
+c:\users\ulisses\documents\visual studio 2015\Projects\FacebookScraper\FacebookScraper\obj\Debug\FacebookScraper.pdb
+c:\users\ulisses\documents\visual studio 2015\Projects\FacebookScraper\FacebookScraper\obj\Debug\FacebookScraper.Form1.resources
