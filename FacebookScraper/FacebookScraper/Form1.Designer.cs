@@ -38,6 +38,8 @@
             this.gmap = new GMap.NET.WindowsForms.GMapControl();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtbloc = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,7 +55,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(33, 77);
+            this.label2.Location = new System.Drawing.Point(33, 62);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 1;
@@ -68,7 +70,7 @@
             // 
             // txtsenha
             // 
-            this.txtsenha.Location = new System.Drawing.Point(116, 74);
+            this.txtsenha.Location = new System.Drawing.Point(116, 62);
             this.txtsenha.Name = "txtsenha";
             this.txtsenha.PasswordChar = '*';
             this.txtsenha.Size = new System.Drawing.Size(155, 20);
@@ -77,11 +79,11 @@
             // 
             // btnLog
             // 
-            this.btnLog.Location = new System.Drawing.Point(116, 117);
+            this.btnLog.Location = new System.Drawing.Point(116, 135);
             this.btnLog.Name = "btnLog";
             this.btnLog.Size = new System.Drawing.Size(75, 23);
             this.btnLog.TabIndex = 4;
-            this.btnLog.Text = "Logar";
+            this.btnLog.Text = "Processar";
             this.btnLog.UseVisualStyleBackColor = true;
             this.btnLog.Click += new System.EventHandler(this.btnLog_Click);
             // 
@@ -144,11 +146,29 @@
             this.label4.Size = new System.Drawing.Size(0, 13);
             this.label4.TabIndex = 9;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(33, 98);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(48, 13);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Bloqueio";
+            // 
+            // txtbloc
+            // 
+            this.txtbloc.Location = new System.Drawing.Point(116, 95);
+            this.txtbloc.Name = "txtbloc";
+            this.txtbloc.Size = new System.Drawing.Size(155, 20);
+            this.txtbloc.TabIndex = 11;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(883, 462);
+            this.Controls.Add(this.txtbloc);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.gmap);
@@ -179,6 +199,8 @@
         private GMap.NET.WindowsForms.GMapControl gmap;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtbloc;
     }
 }
 

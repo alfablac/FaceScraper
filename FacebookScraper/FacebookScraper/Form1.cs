@@ -8,7 +8,7 @@ using System.Collections;
 //using System.Text;
 using System.Windows.Forms;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Chrome;
 using System.Web.Script.Serialization;
 using Newtonsoft.Json;
 using System.Net;
@@ -31,7 +31,7 @@ namespace FacebookScraper
             //WebResponse response = request.GetResponse();
             //Stream data = response.GetResponseStream();
             string html = String.Empty;
-            using (StreamReader sr = new StreamReader(@"json20.txt"))
+            using (StreamReader sr = new StreamReader(@"json.txt"))
             {
                 html = sr.ReadToEnd();
             }
@@ -42,10 +42,7 @@ namespace FacebookScraper
         private void btnLog_Click(object sender, EventArgs e)
         {
 
-            //MessageBox.Show(Convert.ToString(r.data.Count));
-
-
-            IWebDriver driver = new FirefoxDriver("C:\\Program Files");
+            IWebDriver driver = new ChromeDriver("C:\\Program Files");
             driver.Manage().Window.Position.X.Equals(0);
             driver.Manage().Window.Position.Y.Equals(0);
             driver.Manage().Window.Size.Equals(0);
@@ -54,69 +51,69 @@ namespace FacebookScraper
             driver.FindElement(By.Id("pass")).SendKeys(txtsenha.Text);
             driver.FindElement(By.Id("loginbutton")).Click();
 
-
-            //driver.Manage().Timeouts().SetPageLoadTimeout(5);
             int tamanho;
             tamanho = r.data.Count;
-            for (int i = 0; i < tamanho; i++)
+
+            System.Threading.Thread.Sleep(5000);
+            
+            for (int i = Convert.ToInt32(txtbloc.Text); i < tamanho; i++)
             {
+                System.Threading.Thread.Sleep(2000);
                 driver.Url = "https://www.facebook.com/" + r.data[i].id;
                 driver.FindElement(By.XPath(".//*[@data-tab-key='about']")).Click();
-                //driver.FindElement(By.XPath(".//*[@data-hovercard-prefer-more-content-show='1']")); 
-                //driver.FindElement(By.XPath(".//*[@data-testid='nav_edu_work']")).Click(); 
-                //while (true)
-                //{
-                //    var allTextBoxes = driver.FindElement(By.ClassName("profileLink"));
-                //    foreach (var cidade in allTextBoxes)
-                //    {
-                //        cidade.DoSomething();
-                //    }
-                //    IWebElement body = driver.FindElement(By.TagName("body"));
-                //    if (body.Text.Contains("Mora em " + cidade))
-                //    {
-                //        MessageBox.Show("Univale" + cidade);
-                //        break;
-                //    }
-                //}
+                string currentURL = driver.Url;
+                string eduURL = currentURL;
+                string localURL = currentURL;
 
-                IList<IWebElement> all = driver.FindElements(By.TagName("a"));
-                foreach (var item in all)
+                string profilepic;
+
+                try
                 {
-                    MessageBox.Show(item.Text);
+                    profilepic = driver.FindElement(By.CssSelector("[class='profilePic img']")).GetAttribute("src");
+                }
+                catch (Exception)
+                {
+                    profilepic = driver.FindElement(By.CssSelector("[class='profilePic silhouette img']")).GetAttribute("src");
+                    continue;
+                }
+
+
+                localURL = localURL + "&section=living";
+                System.Threading.Thread.Sleep(2000);
+                driver.Url = localURL;
+                IList<IWebElement> all = driver.FindElements(By.TagName("a"));
+                int pos = 0;
+                for (int x = 0; x < all.Count; x++)
+                {
+                    if (all[x].Text == "Acontecimentos")
+                        pos = x;
+                }
+                string city;
+                if (all[pos + 1].Text == "Sobre")
+                    city = "Brasil";
+                else
+                    city = Convert.ToString(all[pos + 1].Text);
+
+                
+
+                eduURL = eduURL + "&section=education";
+                System.Threading.Thread.Sleep(2000);
+                driver.Url = eduURL;
+                IWebElement bodyTag = driver.FindElement(By.TagName("body"));
+                if (bodyTag.Text.Contains("Univale") || bodyTag.Text.Contains("UNIVALE") || bodyTag.Text.Contains("Universidade Vale do Rio Doce"))
+                {
+                    string path = @"profiles.txt";
+                    string write_to_file = r.data[i].name + ';' + r.data[i].id + ';' + profilepic + ';' + "Univale" + ';' + city + ';' + Environment.NewLine;
+                    if (!File.Exists(path))
+                    { 
+                        File.WriteAllText(path, write_to_file);
+                    }
+                    File.AppendAllText(path, write_to_file);
                 }
                 
-   
-                //String[] allText = new String[all.Count];
-                //int iterator = 0;
-                //IWebElement bodysearch = driver.FindElement(By.TagName("body"));
-                //foreach (IWebElement element in all)
-                //{
-                //    MessageBox.Show(element.Text);
-                //    allText[iterator++] = element.Text;
-                //}
-                //foreach (String item in allText)
-                //{
-                //    MessageBox.Show(item);
-                //    //if (bodysearch.Text.Contains("Mora em " + item))
-                //    //{
-                //    //    
-                //    //    break;
-                //    //}
-                //}
 
 
-                string currentURL = driver.Url;
-                currentURL = currentURL + "&section=education";
-                driver.Url = currentURL;
-                IWebElement bodyTag = driver.FindElement(By.TagName("body"));
-                if (bodyTag.Text.Contains("Univale"))
-                {
-                    MessageBox.Show("Univale");
-                    break;
-                }
-                    
             }
-
             learquivo();
             mostra_lista();
 
@@ -164,7 +161,7 @@ namespace FacebookScraper
             gmap.Visible = true;
             gmap.MapProvider = GMap.NET.MapProviders.BingMapProvider.Instance;
             GMap.NET.GMaps.Instance.Mode = GMap.NET.AccessMode.ServerOnly;
-            if (local == "")
+            if (string.IsNullOrEmpty(local))
                 local = "Brasil";
             else
                 local = local + ", Brasil";
