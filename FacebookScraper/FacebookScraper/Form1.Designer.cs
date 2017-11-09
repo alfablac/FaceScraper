@@ -79,7 +79,7 @@
             // 
             // btnLog
             // 
-            this.btnLog.Location = new System.Drawing.Point(116, 135);
+            this.btnLog.Location = new System.Drawing.Point(104, 121);
             this.btnLog.Name = "btnLog";
             this.btnLog.Size = new System.Drawing.Size(75, 23);
             this.btnLog.TabIndex = 4;
@@ -90,9 +90,9 @@
             // lB1
             // 
             this.lB1.FormattingEnabled = true;
-            this.lB1.Location = new System.Drawing.Point(321, 23);
+            this.lB1.Location = new System.Drawing.Point(306, 26);
             this.lB1.Name = "lB1";
-            this.lB1.Size = new System.Drawing.Size(131, 407);
+            this.lB1.Size = new System.Drawing.Size(184, 407);
             this.lB1.TabIndex = 5;
             this.lB1.DoubleClick += new System.EventHandler(this.lB1_DoubleClick);
             // 
@@ -112,7 +112,7 @@
             this.gmap.GrayScaleMode = false;
             this.gmap.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
             this.gmap.LevelsKeepInMemmory = 5;
-            this.gmap.Location = new System.Drawing.Point(486, 29);
+            this.gmap.Location = new System.Drawing.Point(526, 29);
             this.gmap.MarkersEnabled = true;
             this.gmap.MaxZoom = 18;
             this.gmap.MinZoom = 2;
@@ -133,7 +133,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(590, 416);
+            this.label3.Location = new System.Drawing.Point(630, 416);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(0, 13);
             this.label3.TabIndex = 8;
@@ -141,10 +141,11 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(137, 416);
+            this.label4.Location = new System.Drawing.Point(90, 416);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(0, 13);
             this.label4.TabIndex = 9;
+            this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label5
             // 
@@ -154,6 +155,7 @@
             this.label5.Size = new System.Drawing.Size(48, 13);
             this.label5.TabIndex = 10;
             this.label5.Text = "Bloqueio";
+            this.label5.Visible = false;
             // 
             // txtbloc
             // 
@@ -161,12 +163,13 @@
             this.txtbloc.Name = "txtbloc";
             this.txtbloc.Size = new System.Drawing.Size(155, 20);
             this.txtbloc.TabIndex = 11;
+            this.txtbloc.Visible = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(883, 462);
+            this.ClientSize = new System.Drawing.Size(928, 462);
             this.Controls.Add(this.txtbloc);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);

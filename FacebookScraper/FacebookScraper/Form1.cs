@@ -31,7 +31,7 @@ namespace FacebookScraper
             //WebResponse response = request.GetResponse();
             //Stream data = response.GetResponseStream();
             string html = String.Empty;
-            using (StreamReader sr = new StreamReader(@"json.txt"))
+            using (StreamReader sr = new StreamReader(@"json20.txt"))
             {
                 html = sr.ReadToEnd();
             }
@@ -41,8 +41,9 @@ namespace FacebookScraper
 
         private void btnLog_Click(object sender, EventArgs e)
         {
-
-            IWebDriver driver = new ChromeDriver("C:\\Program Files");
+            ChromeOptions options = new ChromeOptions();
+            options.AddArguments("--disable-notifications", "--disable-infobars");
+            IWebDriver driver = new ChromeDriver("C:\\Program Files", options);
             driver.Manage().Window.Position.X.Equals(0);
             driver.Manage().Window.Position.Y.Equals(0);
             driver.Manage().Window.Size.Equals(0);
@@ -54,9 +55,10 @@ namespace FacebookScraper
             int tamanho;
             tamanho = r.data.Count;
 
-            System.Threading.Thread.Sleep(5000);
-            
-            for (int i = Convert.ToInt32(txtbloc.Text); i < tamanho; i++)
+            //System.Threading.Thread.Sleep(5000);
+
+            //for (int i = Convert.ToInt32(txtbloc.Text); i < tamanho; i++)
+            for (int i = 15; i < tamanho; i++)
             {
                 System.Threading.Thread.Sleep(2000);
                 driver.Url = "https://www.facebook.com/" + r.data[i].id;
@@ -79,7 +81,7 @@ namespace FacebookScraper
 
 
                 localURL = localURL + "&section=living";
-                System.Threading.Thread.Sleep(2000);
+                //System.Threading.Thread.Sleep(2000);
                 driver.Url = localURL;
                 IList<IWebElement> all = driver.FindElements(By.TagName("a"));
                 int pos = 0;
@@ -97,7 +99,7 @@ namespace FacebookScraper
                 
 
                 eduURL = eduURL + "&section=education";
-                System.Threading.Thread.Sleep(2000);
+                //System.Threading.Thread.Sleep(2000);
                 driver.Url = eduURL;
                 IWebElement bodyTag = driver.FindElement(By.TagName("body"));
                 if (bodyTag.Text.Contains("Univale") || bodyTag.Text.Contains("UNIVALE") || bodyTag.Text.Contains("Universidade Vale do Rio Doce"))
@@ -114,6 +116,7 @@ namespace FacebookScraper
 
 
             }
+            driver.Quit();
             learquivo();
             mostra_lista();
 
@@ -124,7 +127,7 @@ namespace FacebookScraper
 
             
             string line;
-            StreamReader profiles = new StreamReader(@"profiles.txt");
+            StreamReader profiles = new StreamReader(@"profiles_salvo.txt");
 
             while (!profiles.EndOfStream)
             {
@@ -136,7 +139,15 @@ namespace FacebookScraper
                 _item.Foto = values[2];
                 _item.Universidade = values[3];
                 _item.Local = values[4];
-                _perfis.Add(_item.Nome, _item);
+                try
+                {
+                    _perfis.Add(_item.Nome, _item);
+                }
+                catch (System.ArgumentException)
+                {
+                    continue;
+                }
+                
             }
 
             profiles.Close();
@@ -161,10 +172,6 @@ namespace FacebookScraper
             gmap.Visible = true;
             gmap.MapProvider = GMap.NET.MapProviders.BingMapProvider.Instance;
             GMap.NET.GMaps.Instance.Mode = GMap.NET.AccessMode.ServerOnly;
-            if (string.IsNullOrEmpty(local))
-                local = "Brasil";
-            else
-                local = local + ", Brasil";
             gmap.SetPositionByKeywords(local);
             label3.Text = local;
             label4.Text = nome;
