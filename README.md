@@ -1,12 +1,10 @@
-# FaceScraperUnivale
+﻿# FaceScraperUnivale
 Programa loga no Facebook dadas as credenciais, captura cidade que mora atualmente, verifica se estudou na Univale e grava em um arquivo pra ser lido após execução do scraper. Listbox exibe nome e dois cliques carrega foto e local no mapa onde a pessoa reside atualmente.
 
 ![alt text](https://i.imgur.com/elNFs8f.png "Exemplo")
 
 # Dependências
 - **Instalar os pacotes do NuGet**
-
-Já estão acompanhados nesse git
 
 Selenium.WebDriver (*Necessário para rodar o bot*)
 
