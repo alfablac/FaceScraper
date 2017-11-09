@@ -35,6 +35,9 @@
             this.btnLog = new System.Windows.Forms.Button();
             this.lB1 = new System.Windows.Forms.ListBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.gmap = new GMap.NET.WindowsForms.GMapControl();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,7 +77,7 @@
             // 
             // btnLog
             // 
-            this.btnLog.Location = new System.Drawing.Point(107, 129);
+            this.btnLog.Location = new System.Drawing.Point(116, 117);
             this.btnLog.Name = "btnLog";
             this.btnLog.Size = new System.Drawing.Size(75, 23);
             this.btnLog.TabIndex = 4;
@@ -87,23 +90,68 @@
             this.lB1.FormattingEnabled = true;
             this.lB1.Location = new System.Drawing.Point(321, 23);
             this.lB1.Name = "lB1";
-            this.lB1.Size = new System.Drawing.Size(581, 407);
+            this.lB1.Size = new System.Drawing.Size(131, 407);
             this.lB1.TabIndex = 5;
             this.lB1.DoubleClick += new System.EventHandler(this.lB1_DoubleClick);
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(47, 199);
+            this.pictureBox1.Location = new System.Drawing.Point(41, 164);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(230, 230);
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
+            // gmap
+            // 
+            this.gmap.Bearing = 0F;
+            this.gmap.CanDragMap = true;
+            this.gmap.EmptyTileColor = System.Drawing.Color.Navy;
+            this.gmap.GrayScaleMode = false;
+            this.gmap.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
+            this.gmap.LevelsKeepInMemmory = 5;
+            this.gmap.Location = new System.Drawing.Point(486, 29);
+            this.gmap.MarkersEnabled = true;
+            this.gmap.MaxZoom = 18;
+            this.gmap.MinZoom = 2;
+            this.gmap.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
+            this.gmap.Name = "gmap";
+            this.gmap.NegativeMode = false;
+            this.gmap.PolygonsEnabled = true;
+            this.gmap.RetryLoadTile = 0;
+            this.gmap.RoutesEnabled = true;
+            this.gmap.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
+            this.gmap.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
+            this.gmap.ShowTileGridLines = false;
+            this.gmap.Size = new System.Drawing.Size(371, 365);
+            this.gmap.TabIndex = 7;
+            this.gmap.Visible = false;
+            this.gmap.Zoom = 13D;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(590, 416);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(0, 13);
+            this.label3.TabIndex = 8;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(137, 416);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(0, 13);
+            this.label4.TabIndex = 9;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(914, 462);
+            this.ClientSize = new System.Drawing.Size(883, 462);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.gmap);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lB1);
             this.Controls.Add(this.btnLog);
@@ -128,6 +176,9 @@
         private System.Windows.Forms.Button btnLog;
         private System.Windows.Forms.ListBox lB1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private GMap.NET.WindowsForms.GMapControl gmap;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }
 

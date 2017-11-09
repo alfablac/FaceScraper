@@ -15,7 +15,8 @@ namespace FacebookScraper
         
         public override string ToString()
         {
-            return $"{id} * {Nome} * {Foto} * {Universidade} * {Local}";
+            return $"{Nome}                                                   * {id} * {Foto} * {Universidade} * {Local}";
         }
+
     }
 }
